@@ -15,13 +15,13 @@ except ImportError:
 
 
 ##twitter api setup
-client_id = "X09xWkRiYWt1SkQ0VzJVQjNaSjk6MTpjaQ"
-client_secret = "03XBKdLIJqfV4ocvP60D7GVD1Xaw-ZtBV7JFZghjn7wah4JXRc"
-api_key = "PgfSORbXOgnUI5Kb26jXqOyWR"
-api_key_secret = "JN5yy6mpOmZJTqal5NnKXzzo6NFnmab8TjzXOjfOoSD22SaCQE" 
-access_token = "1560724393483014145-DejdZZnPyEiZFmYtbmKISbrmvNbacN"
-access_token_secret = "JWwvQHe6vFhIWkcM9phbVq76SW3mnwPSaQ6emssguAg5K"
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAL0DggEAAAAAXuMamBeFbvjQoHMcj60p0%2FrrwUQ%3DmPOX8FDbiOfza5Js0uxbRJXkAgoIycgWkvmL2CWvOwJG5NJFck" 
+client_id = "xxxx"
+client_secret = "xxxx"
+api_key = "xxxx"
+api_key_secret = "xxxx" 
+access_token = "xxxx"
+access_token_secret = "xxxx"
+bearer_token = "xxxx" 
 
 auth = tweepy.OAuthHandler(api_key, api_key_secret)
 auth.set_access_token(access_token, access_token_secret)
