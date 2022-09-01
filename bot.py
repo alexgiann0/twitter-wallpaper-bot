@@ -57,7 +57,7 @@ def imageUpload() :
     else:
         print("Failed to locate/delete image from directory\n")
     
-schedule.every().minute.at(":00").do(imageUpload) ####
+schedule.every().hour.at(":00").do(imageUpload)
 
 while True:
     schedule.run_pending()
