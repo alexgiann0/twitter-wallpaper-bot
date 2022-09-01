@@ -1,17 +1,10 @@
-try:
-    import tweepy
-    import urllib.request
-    from datetime import datetime
-    import requests
-    import os
-    import schedule
-    import time
-except ImportError:
-    print("Error: {}".format(str(ImportError)))
-    print("Install dependencies from requirements.txt!")
-    print("Exiting...")
-    time.sleep(5)
-    exit()
+import tweepy
+import urllib.request
+from datetime import datetime
+import requests
+import os
+import schedule
+import time
 
 
 ##twitter api setup
@@ -37,8 +30,7 @@ def generator(x, y):
     return f"https://picsum.photos/{x}/{y}"
 
 def imageUpload() :
-    now = datetime.now()
-
+    
     try:
         print("Pending request...") 
         img = requests.get(generator(3840, 2160)).url 
@@ -46,26 +38,26 @@ def imageUpload() :
         print("Failed to get image. \nError: {}\n".format(str(e)))
         return
     else:
-        print("Got image at {}".format(now.strftime("%d/%m/%Y %H:%M:%S")))
+        print("[{}]Got image".format(datetime.now().strftime("%H:%M:%S")))
 
 
-    path = "E:/twitter_bot_images/image-{}.jpg".format(now.strftime("%d_%m_%Y-%H.%M.%S"))
+    path = "E:/twitter_bot_images/image.jpg"
 
     get_picture(img, path)
 
     try:
         api.update_status_with_media("", path)
-        print("Uploaded image at {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
+        print("[{}]Uploaded image".format(datetime.now().strftime("%H:%M:%S")))
     except Exception as e:
         print("Failed to upload image. Error: {}".format(str(e)))
 
-    if os.path.exists("E:/twitter_bot_images/image-{}.jpg".format(now.strftime("%d_%m_%Y-%H.%M.%S"))):
-        os.remove("E:/twitter_bot_images/image-{}.jpg".format(now.strftime("%d_%m_%Y-%H.%M.%S")))
-        print("Deleted image from directory at {}\n".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S")))
+    if os.path.exists("E:/twitter_bot_images/image.jpg"):
+        os.remove("E:/twitter_bot_images/image.jpg")
+        print("[{}]Deleted image from directory\n".format(datetime.now().strftime("%H:%M:%S")))
     else:
         print("Failed to locate/delete image from directory\n")
     
-schedule.every().hour.at(":00").do(imageUpload)
+schedule.every().minute.at(":00").do(imageUpload) ####
 
 while True:
     schedule.run_pending()
